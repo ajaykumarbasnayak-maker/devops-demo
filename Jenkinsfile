@@ -1,40 +1,28 @@
 
 pipeline {
     agent any
-
+    
     stages {
-
-        stage('Checkout') {
-            steps {
-                echo 'Source code is available from GitHub'
-            }
-        }
-
         stage('Build') {
             steps {
-                echo 'Build stage running'
+                sh 'mvn clean compile'
             }
         }
-
         stage('Test') {
             steps {
-                echo 'Test stage running'
+                sh 'mvn test'
             }
-        }
-
-        
+          
         stage('package') {
             steps {
                 echo 'package running'
             }
         }
-        
-        stage('Deploy') {
+
+        stage('Deploy') { 
             steps {
-                echo 'deployed to folder'
+                sh './jenkins/scripts/deploy.sh' 
             }
         }
-
-
     }
 }
