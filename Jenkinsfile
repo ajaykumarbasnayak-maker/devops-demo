@@ -22,5 +22,19 @@ pipeline {
             }
         }
 
+        
+        stage('package') {
+            steps {
+                echo 'package running'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                echo 'deployed to folder'
+            }
+        }
+
+
     }
 }
